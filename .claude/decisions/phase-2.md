@@ -1,0 +1,11 @@
+# Phase 2 — Design System Decisions
+- profile: bold (profile-bold.css)
+- palette-params: hue=15 (ember crimson), accent-hue=65 (copper), chroma=0.20 (high)
+- theme-name: forge
+- heading-font: Bebas Neue (weight 400 — condensed display)
+- body-font: Source Sans 3 (weight 400/600/700/900)
+- archetype-overrides: grain-opacity=0.07, anvil-stamp-headers, molten-edge-glow, img-duotone/mask/elevated
+- effects-copied: WaveDivider, GradientSweep, RingBorder, TracePath, GlowCursor, ParticleField
+- layouts-copied: all 8 templates
+- gradient-style: industrial bold — asymmetric origins, steep angles, 0.15-0.25 opacity
+- dark-theme: yes (surfaces 12%-28% lightness, text 55%-95%)

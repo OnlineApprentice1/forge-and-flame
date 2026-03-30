@@ -1,0 +1,66 @@
+/* ============================================
+   Archetype: Forge Glow Industrial Bold
+   Site-specific additions ONLY — does NOT
+   redefine profile card/badge/button/divider classes.
+   ============================================ */
+
+/* Grain overlay — coarse, industrial, 0.07 opacity
+   (higher than default per brand-to-visual: rugged) */
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.07'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* Signature: anvil-stamp-headers
+   Heavy 3px top accent border + tight uppercase tracking
+   on section headings. Looks like a maker's stamp. */
+.anvil-stamp {
+  border-top: 3px solid var(--clr-accent);
+  padding-top: 0.75rem;
+  display: inline-block;
+}
+
+/* Signature: molten-edge-glow
+   Cards/containers with ember-coloured edge glow.
+   Uses box-shadow to simulate cooling metal edge. */
+.molten-edge {
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--clr-primary) 30%, transparent),
+    0 0 20px -4px color-mix(in oklch, var(--clr-primary) 20%, transparent);
+}
+
+.molten-edge-accent {
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--clr-accent) 30%, transparent),
+    0 0 20px -4px color-mix(in oklch, var(--clr-accent) 20%, transparent);
+}
+
+/* Image treatment: duotone filter (crimson shift) */
+.img-duotone {
+  filter: grayscale(100%) contrast(1.1);
+  mix-blend-mode: luminosity;
+}
+
+/* Image treatment: gradient mask (fade-to-bg) */
+.img-gradient-mask {
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+/* Image treatment: elevated with ember shadow */
+.img-elevated {
+  box-shadow:
+    0 8px 24px -4px color-mix(in oklch, var(--clr-primary) 15%, transparent),
+    0 2px 8px -2px oklch(0% 0 0 / 0.3);
+}
