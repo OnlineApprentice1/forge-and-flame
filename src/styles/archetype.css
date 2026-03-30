@@ -62,5 +62,5 @@
 .img-elevated {
   box-shadow:
     0 8px 24px -4px color-mix(in oklch, var(--clr-primary) 15%, transparent),
-    0 2px 8px -2px oklch(0% 0 0 / 0.3);
+    0 2px 8px -2px color-mix(in oklch, var(--clr-surface-1) 70%, transparent);
 }

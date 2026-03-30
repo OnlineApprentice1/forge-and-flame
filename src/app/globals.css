@@ -7,7 +7,7 @@
 @plugin "daisyui/theme" {
   name: "forge";
   default: true;
-  primary: oklch(45% 0.20 15);
+  primary: oklch(50% 0.20 15);
   secondary: oklch(18% 0.03 15);
   accent: oklch(75% 0.20 65);
   neutral: oklch(30% 0.03 15);

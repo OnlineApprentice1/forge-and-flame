@@ -26,7 +26,7 @@ const services = [
     },
     description: [
       "Every fabrication project starts with a conversation. We sit down with you, understand the load requirements, the environment, the aesthetic — and then we build a solution that exists nowhere else. Our shop in Thunder Bay is equipped for everything from light ornamental work to heavy structural steel.",
-      "We work with mild steel, stainless steel, aluminum, and wrought iron. Whether you need a one-off bracket or a full structural frame, we run the same process: design review, material selection, fabrication, finish, and delivery. Nothing leaves our floor without passing our internal inspection.",
+      "We work with mild steel, stainless steel, aluminum, and wrought iron. From a one-off bracket to a full structural frame, we run the same process: design review, material selection, fabrication, finish, and delivery. Nothing leaves our floor without passing our internal inspection.",
       "Northern Ontario's extreme climate demands materials and finishes rated for -40° winters and Lake Superior humidity. We factor that into every spec — because a beautiful gate that corrodes in three seasons is a failure, not a success.",
     ],
     details: {

@@ -7,7 +7,7 @@
  */
 
 export const palette = {
-  primary:       { oklch: "oklch(45% 0.20 15)", hex: "#8B2010" },
+  primary:       { oklch: "oklch(50% 0.20 15)", hex: "#A0281A" },
   primaryLight:  { oklch: "oklch(60% 0.20 15)", hex: "#C0392B" },
   primaryMuted:  { oklch: "oklch(40% 0.10 15)", hex: "#5C3028" },
   accent:        { oklch: "oklch(75% 0.20 65)", hex: "#D4932A" },

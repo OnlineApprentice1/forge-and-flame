@@ -5,7 +5,7 @@
 
 :root {
   /* PRIMARY SCALE — deep ember crimson */
-  --clr-primary:       oklch(45% 0.20 15);
+  --clr-primary:       oklch(50% 0.20 15);
   --clr-primary-light: oklch(60% 0.20 15);
   --clr-primary-muted: oklch(40% 0.10 15);
 
