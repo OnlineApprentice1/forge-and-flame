@@ -1,0 +1,24 @@
+# Phase 0 — Intake Decisions
+- business: "Forge & Flame Custom Metalworks"
+- trade: welding & custom metal fabrication
+- location: Thunder Bay, Ontario
+- service-area: Thunder Bay, Lakehead region, Northwestern Ontario
+- owner: Marcus Reeves
+- phone: (807) 555-0173
+- email: info@forgeandflame.ca
+- mood: industrial, powerful, fiery
+- archetype: forge-glow-industrial-bold
+- hero-concept: spark-cascade-split (dark split-screen with radial forge gradient + animated sparks)
+- palette-family: bold
+- palette-primary: oklch(45% 0.20 15)
+- palette-secondary: oklch(18% 0.03 15)
+- palette-accent: oklch(75% 0.20 65)
+- palette-neutral: oklch(95% 0.01 60)
+- heading-font: Bebas Neue
+- body-font: Source Sans 3
+- section-order: hero → signature-project → services → process → materials → testimonials → cta
+- signature-moves: molten-edge-glow (GradientSweep adapted), anvil-stamp-headers (heavy top borders), spark-trail-dividers (WaveDivider with spark dots)
+- animation-assignments: hero=scale-up+parallax, signature-project=clip-reveal, services=slide-alternate+cascade, process=blur-sharpen+cascade, materials=fade-up+fan, testimonials=rotate-in+pop, cta=none
+- services-count: 5
+- faq-count: 8
+- inner-page-layouts: services=bento-showcase, about=story-image, contact=form-sidebar
