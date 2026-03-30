@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { Menu, X, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
 
 const navLinks = [
@@ -14,41 +16,131 @@ const navLinks = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const prefersReducedMotion = useReducedMotion();
+
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: { opacity: 1, height: "auto" },
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-base-100/80 border-b border-base-300/50">
+    <header
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md"
+      style={{
+        backgroundColor: "var(--clr-surface-1)",
+        borderBottom: "2px solid var(--clr-surface-3)",
+      }}
+    >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-        <Link href="/" className="font-heading text-xl font-bold text-primary">
+        {/* Logo */}
+        <Link
+          href="/"
+          className="type-card font-heading text-primary hover:text-accent transition-colors"
+          style={{ fontFamily: "var(--font-heading)" }}
+        >
           {siteConfig.name}
         </Link>
+
+        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-sm text-base-content/70 hover:text-primary transition-colors">
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`type-small transition-colors${
+                pathname === link.href
+                  ? " text-accent"
+                  : " hover:text-accent"
+              }`}
+              style={{
+                color:
+                  pathname === link.href
+                    ? "var(--clr-accent)"
+                    : "var(--clr-text-secondary)",
+              }}
+            >
               {link.label}
             </Link>
           ))}
-          <Link href="/contact" className="btn btn-primary btn-sm">Get a Free Estimate</Link>
         </div>
-        <button onClick={() => setOpen(!open)} className="md:hidden p-2" aria-label={open ? "Close menu" : "Open menu"}>
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            {open ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
+
+        {/* Desktop right: phone + CTA */}
+        <div className="hidden md:flex items-center gap-4">
+          <a
+            href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
+            className="type-small flex items-center gap-1.5 transition-colors hover:text-accent"
+            style={{ color: "var(--clr-text-muted)" }}
+          >
+            <Phone size={14} />
+            {siteConfig.phone}
+          </a>
+          <Link href="/contact" className="btn-profile type-small">
+            Get a Quote
+          </Link>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden p-2 transition-colors hover:text-accent"
+          style={{ color: "var(--clr-text-secondary)" }}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+        >
+          {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
+
+      {/* Mobile menu panel */}
       <AnimatePresence>
         {open && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-base-100/95 backdrop-blur-md border-b border-base-300/50 overflow-hidden">
-            <div className="px-4 py-4 flex flex-col gap-4">
+          <motion.div
+            key="mobile-menu"
+            initial={prefersReducedMotion ? false : "hidden"}
+            animate="visible"
+            exit="hidden"
+            variants={mobileMenuVariants}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="md:hidden overflow-hidden"
+            style={{
+              backgroundColor: "var(--clr-surface-2)",
+              borderBottom: "2px solid var(--clr-surface-3)",
+            }}
+          >
+            <div className="px-4 py-5 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} onClick={() => setOpen(false)}
-                  className="text-base-content/70 hover:text-primary transition-colors py-2">{link.label}</Link>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="type-body transition-colors hover:text-accent py-1"
+                  style={{
+                    color:
+                      pathname === link.href
+                        ? "var(--clr-accent)"
+                        : "var(--clr-text-secondary)",
+                  }}
+                >
+                  {link.label}
+                </Link>
               ))}
-              <Link href="/contact" onClick={() => setOpen(false)} className="btn btn-primary btn-sm w-fit">Get a Free Estimate</Link>
+              <a
+                href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
+                className="type-small flex items-center gap-1.5 transition-colors hover:text-accent"
+                style={{ color: "var(--clr-text-muted)" }}
+                onClick={() => setOpen(false)}
+              >
+                <Phone size={14} />
+                {siteConfig.phone}
+              </a>
+              <Link
+                href="/contact"
+                onClick={() => setOpen(false)}
+                className="btn-profile type-small w-fit"
+              >
+                Get a Quote
+              </Link>
             </div>
           </motion.div>
         )}
